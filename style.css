@@ -1,0 +1,728 @@
+/* ============================================================
+   Nimbus — site styles.
+   No framework, no build step. Tokens first, then layout,
+   then the island demo, then responsive + motion prefs.
+   ============================================================ */
+
+:root {
+  /* Warm ground. Everything on this page shares one hue axis (~34°),
+     so the ink reads as brown-black rather than fighting the cream. */
+  --paper:    #fff0df;
+  --paper-2:  #fff7ec;
+  --paper-3:  #f7e3cd;
+
+  --ink:      #43302b;                    /* warm stone, not neutral black */
+  --ink-2:    rgba(67, 48, 43, 0.72);
+  --ink-3:    rgba(67, 48, 43, 0.48);
+
+  --line:     rgba(199, 108, 36, 0.28);   /* orange hairline */
+  --line-2:   rgba(199, 108, 36, 0.14);
+
+  --obsidian: #0b0b0f;
+  --emerald:  #26cc41;
+  --amber:    #ff9402;
+
+  --r:        16px;
+  --r-lg:     24px;
+
+  --ease:      cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snap: cubic-bezier(0.3, 1.55, 0.45, 1);
+
+  --font: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, monospace;
+
+  --pad:  clamp(20px, 6vw, 144px);
+  --head: 116px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* Visually hidden, still announced. */
+.sr {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+.skip {
+  position: absolute; left: 16px; top: -60px; z-index: 999;
+  padding: 12px 18px; border-radius: 12px;
+  background: var(--ink); color: var(--paper);
+  transition: top 160ms var(--ease);
+}
+.skip:focus-visible { top: 16px; }
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ============================ NAV ============================ */
+
+.nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  height: var(--head);
+  display: flex; align-items: center;
+  padding: 0 var(--pad);
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: saturate(180%) blur(20px);
+  transition: box-shadow 200ms var(--ease);
+}
+/* The hairline only appears once content is actually behind the bar. */
+.nav.stuck { box-shadow: inset 0 -1px 0 var(--line); }
+
+.nav-in {
+  display: flex; align-items: center; gap: 14px;
+  width: 100%; max-width: 1280px; margin: 0 auto;
+}
+
+.mark { display: flex; align-items: center; gap: 9px; }
+.mark-svg { width: 30px; height: 11px; color: var(--ink); }
+.mark-word { font-size: 19px; font-weight: 700; letter-spacing: -0.3px; }
+
+.ver {
+  padding: 3px 9px; border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 12px; color: var(--ink-3);
+}
+
+.nav-links {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 28px;
+  font-size: 15px; font-weight: 500; color: var(--ink-2);
+}
+.nav-links a { transition: color 140ms var(--ease); }
+.nav-links a:hover { color: var(--ink); }
+
+/* ============================ BUTTONS ============================ */
+/* Transparent and borderless — the cream ground does the work. */
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 0; background: transparent;
+  color: var(--ink);
+  font: 700 15px/1 var(--font);
+  padding: 12px 18px; border-radius: var(--r);
+  cursor: pointer;
+  transition: background 160ms var(--ease), transform 160ms var(--ease);
+}
+.btn:hover  { background: color-mix(in srgb, var(--ink) 7%, transparent); }
+.btn:active { transform: scale(0.975); }
+
+.nav .btn { margin-left: 22px; }
+
+/* Hero / closer sizing: 60px tall, 18px label. */
+.cta .btn { height: 60px; font-size: 18px; padding: 16px 20px; }
+
+/* 52px of left padding is the download-glyph slot, drawn as a
+   background so the label keeps its own box. */
+.cta .btn-dl {
+  padding-left: 52px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2343302b' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 4v11M7 11l5 5 5-5M5 20h14'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 20px center;
+  background-size: 20px 20px;
+}
+
+.chip {
+  padding: 5px 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 9%, transparent);
+  font-size: 15px; font-weight: 700;
+}
+
+/* ============================ LAYOUT ============================ */
+
+main { padding-top: var(--head); }
+
+.col {
+  width: 100%; max-width: 1280px;
+  margin: 0 auto;
+  padding: 76px var(--pad) 112px;
+}
+
+/* ============================ HERO ============================ */
+/* No lede paragraph — headline, then buttons. That's the whole hero. */
+
+.hero { margin-bottom: 80px; }
+
+.display {
+  margin: 0 0 34px;
+  /* Tracking goes negative as the type grows, per Apple's optical rules. */
+  font-size: clamp(44px, 7vw, 96px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  max-width: 80%;
+}
+
+/* Spacing only — this is not a highlight. */
+mark {
+  background: transparent;
+  color: inherit;
+  padding: 0 8px 0 0;
+}
+
+.cta { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* ============================ STAGE ============================ */
+
+.stage-wrap { margin-bottom: 96px; }
+
+.stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+  /* Painted wallpaper — no image request, no layout shift. */
+  background:
+    radial-gradient(120% 90% at 18% 8%,   #3d3a86 0%, transparent 56%),
+    radial-gradient(110% 80% at 88% 22%,  #1f6f8b 0%, transparent 52%),
+    radial-gradient(140% 120% at 50% 108%, #101a3a 0%, transparent 62%),
+    linear-gradient(168deg, #191a35 0%, #0c0d1c 62%, #08080f 100%);
+}
+
+.glow {
+  position: absolute; left: 50%; top: -70px;
+  width: 620px; height: 300px; transform: translateX(-50%);
+  background: radial-gradient(50% 50% at 50% 50%, rgba(120,190,255,.20), transparent 70%);
+  pointer-events: none;
+}
+
+.menubar {
+  position: absolute; inset: 0 0 auto 0;
+  height: 26px; display: flex; align-items: center; gap: 16px;
+  padding: 0 14px;
+  background: rgba(0,0,0,.28);
+  color: rgba(255,255,255,.88);
+  font-size: 12px;
+}
+.mb-logo {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: rgba(255,255,255,.85);
+}
+.mb-t.strong { font-weight: 700; }
+.mb-right { margin-left: auto; display: flex; gap: 14px; }
+.mono { font-family: var(--mono); }
+
+/* The desktop behind the island, so it has something to sit on. */
+.lock {
+  position: absolute; left: 0; right: 0; top: 27%;
+  text-align: center; color: #fff;
+  text-shadow: 0 2px 20px rgba(0,0,0,.4);
+}
+.lock-time { margin: 0; font-size: clamp(48px, 8vw, 92px); font-weight: 250; letter-spacing: -2px; }
+.lock-date { margin: 6px 0 0; font-size: clamp(13px, 1.4vw, 18px); opacity: .82; }
+
+.hint {
+  position: absolute; left: 0; right: 0; bottom: 20px;
+  margin: 0; text-align: center;
+  font-size: 13px; color: rgba(255,255,255,.62);
+  transition: opacity 300ms var(--ease);
+}
+.hint.gone { opacity: 0; }
+
+/* ---------------------------- the island ---------------------------- */
+
+.island {
+  position: absolute; left: 50%; top: 0;
+  transform: translateX(-50%);
+  appearance: none; border: 0; padding: 0; margin: 0;
+  font: inherit; color: #fff; text-align: left; cursor: pointer;
+  background: #000; border-radius: 999px;
+  box-shadow: 0 0 0 0.5px rgba(255,255,255,.09),
+              0 22px 50px -18px rgba(0,0,0,.85),
+              0 0 44px -14px rgba(120,190,255,.28);
+  /* Idle pill at the real measured width: 258pt body × 32pt tall. */
+  width: 258px; height: 32px;
+  /* Animating width/height is normally a sin. Here it is the product:
+     the element is absolutely positioned and alone in its stacking
+     context, so nothing else reflows with it. */
+  transition: width 520ms var(--ease-snap), height 520ms var(--ease-snap),
+              border-radius 460ms var(--ease);
+  will-change: width, height;
+}
+/* Every open surface expands to the same measured open body: 344pt × 175pt,
+   the real island's open geometry. Only the content differs. */
+.island[data-mode="music"]    { width: 344px; height: 175px; border-radius: 34px; }
+.island[data-mode="shelf"]    { width: 344px; height: 175px; border-radius: 34px; }
+.island[data-mode="together"] { width: 344px; height: 175px; border-radius: 34px; }
+.island[data-mode="calendar"] { width: 344px; height: 175px; border-radius: 34px; }
+
+.isl-in { position: absolute; inset: 0; }
+
+.pane {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; gap: 12px; padding: 0 16px;
+  opacity: 0; visibility: hidden; transform: scale(0.94);
+  /* visibility (not just opacity) keeps hidden panes out of the
+     accessibility tree and the tab order. */
+  transition: opacity 220ms var(--ease), transform 380ms var(--ease-snap), visibility 0s 240ms;
+}
+.island[data-mode="idle"]     .pane[data-pane="idle"],
+.island[data-mode="music"]    .pane[data-pane="music"],
+.island[data-mode="shelf"]    .pane[data-pane="shelf"],
+.island[data-mode="together"] .pane[data-pane="together"],
+.island[data-mode="calendar"] .pane[data-pane="calendar"] {
+  opacity: 1; visibility: visible; transform: scale(1);
+  transition-delay: 130ms, 130ms, 0s;
+}
+
+.pane .col {
+  display: flex; flex-direction: column; gap: 2px;
+  min-width: 0; padding: 0; margin: 0; max-width: none;
+}
+.pane .col.wide { flex: 1; }
+.pane b { font-size: 14px; font-weight: 600; }
+.pane i { font-style: normal; font-size: 12px; color: rgba(255,255,255,.58); }
+
+.lens {
+  width: 11px; height: 11px; border-radius: 50%;
+  margin: auto; background: #16161a;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.10);
+}
+
+.art {
+  width: 44px; height: 44px; border-radius: 10px; flex: none;
+  background: linear-gradient(140deg, #6f7bd8, #b06fd8 60%, #d86f9b);
+}
+
+.wave { display: flex; align-items: flex-end; gap: 3px; height: 20px; margin-left: auto; }
+.wave s {
+  width: 3px; height: 40%; border-radius: 2px;
+  background: rgba(255,255,255,.75);
+  animation: bar 900ms var(--ease) infinite alternate;
+}
+.wave s:nth-child(2) { animation-delay: 120ms; }
+.wave s:nth-child(3) { animation-delay: 240ms; }
+.wave s:nth-child(4) { animation-delay: 360ms; }
+.wave s:nth-child(5) { animation-delay: 480ms; }
+@keyframes bar { to { height: 100%; } }
+
+.glyph { font-size: 26px; line-height: 1; }
+
+.days { display: flex; gap: 5px; margin-left: auto; }
+.days s {
+  width: 5px; height: 26px; border-radius: 3px;
+  background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.14));
+}
+
+.ring {
+  width: 34px; height: 34px; border-radius: 50%; flex: none;
+  background: conic-gradient(#fff 0 68%, rgba(255,255,255,.16) 68% 100%);
+  mask: radial-gradient(circle, transparent 58%, #000 59%);
+}
+
+.track {
+  height: 4px; border-radius: 999px; margin-top: 6px;
+  background: rgba(255,255,255,.18); overflow: hidden;
+}
+.track s { display: block; width: 62%; height: 100%; background: #fff; }
+
+/* ===================== demo surfaces (match the real island) ===================== */
+
+/* Music — the real media pane, ported from the app's now-playing snapshot:
+   large artwork, marquee title, live waveform, 44pt circular transport, and
+   a hairline scrub rail with times on the island floor. */
+.pane[data-pane="music"] {
+  justify-content: flex-start; gap: 14px; padding: 0 18px; color: #fff;
+}
+.pane[data-pane="music"]::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: radial-gradient(120% 100% at 10% 0%, rgba(120,190,255,.09), transparent 62%);
+  pointer-events: none;
+}
+.d-art {
+  width: 64px; height: 64px; flex: none; border-radius: 15px;
+  display: grid; place-items: center; position: relative; overflow: hidden;
+  background: linear-gradient(140deg, #6f7bd8, #b06fd8 60%, #d86f9b);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.28),
+              0 10px 26px -10px rgba(176,111,216,.55);
+}
+.d-art::before {
+  content: ""; width: 26px; height: 26px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.85)' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18V5l12-2v13'/%3E%3Ccircle cx='6' cy='18' r='3'/%3E%3Ccircle cx='18' cy='16' r='3'/%3E%3C/svg%3E") center/contain no-repeat;
+  z-index: 1;
+}
+.d-art::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.16), transparent 42%);
+  mix-blend-mode: overlay;
+}
+.d-meta { min-width: 0; flex: 1; }
+.d-tt { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.d-mq { flex: 1 1 auto; min-width: 0; position: relative; overflow: hidden; }
+.d-mq-in { display: inline-block; white-space: nowrap; }
+.d-mq-in b {
+  display: inline-block; font-size: 18px; font-weight: 750; letter-spacing: -0.01em;
+  color: #fff; padding: 0 7px;
+}
+.d-ar {
+  display: block; font-size: 11px; color: rgba(255,255,255,.64);
+  margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.d-wave { display: inline-flex; align-items: flex-end; gap: 3px; height: 14px; flex: none; }
+.d-wave i {
+  width: 3px; border-radius: 99px; background: rgba(255,255,255,.75);
+  transform-origin: bottom; animation: dWave 0.9s ease-in-out infinite;
+}
+.d-wave i:nth-child(1) { height: 38%; animation-delay: -.7s; }
+.d-wave i:nth-child(2) { height: 88%; animation-delay: -.35s; }
+.d-wave i:nth-child(3) { height: 58%; animation-delay: -.55s; }
+.d-wave i:nth-child(4) { height: 72%; animation-delay: -.15s; }
+@keyframes dWave { 0% { transform: scaleY(.35); } 100% { transform: scaleY(1); } }
+.d-controls { display: flex; align-items: center; gap: 10px; flex: none; }
+.d-ctl {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.10);
+  color: #fff; display: grid; place-items: center;
+}
+.d-ctl.d-play { background: rgba(255,255,255,.20); border-color: rgba(255,255,255,.14); }
+.d-ctl svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.d-ctl svg.solid { fill: currentColor; stroke: none; }
+.d-scrub {
+  position: absolute; left: 18px; right: 18px; bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.d-scrub-rail {
+  position: relative; flex: 1; height: 4px; border-radius: 99px;
+  background: rgba(255,255,255,.14); overflow: hidden;
+}
+.d-scrub-rail i {
+  position: absolute; inset: 0 auto 0 0; width: 42%;
+  border-radius: 99px; background: linear-gradient(90deg, rgba(255,255,255,.2), #fff);
+}
+.d-t-time { font-size: 9px; color: rgba(255,255,255,.72); font-variant-numeric: tabular-nums; }
+
+/* Shelf — a row of parked file chips, like the native strip. */
+.demo-shelf {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%;
+}
+.demo-chip {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 8px 10px; border-radius: 10px; background: rgba(255,255,255,.06);
+}
+.demo-chip svg { width: 26px; height: 26px; fill: rgba(255,255,255,.85); }
+.demo-chip b {
+  font-size: 9px; font-weight: 500; color: rgba(255,255,255,.7);
+  max-width: 64px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Listen together — two columns: friends + chat, the radio pane's real split. */
+.pane[data-pane="together"] { align-items: stretch; padding: 0; }
+.demo-radio { display: flex; align-items: stretch; width: 100%; height: 100%; }
+.demo-people, .demo-chat {
+  flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center;
+  gap: 6px;
+}
+.demo-people { padding: 0 12px 0 18px; }
+.demo-chat { padding: 0 18px 0 12px; }
+.demo-divider { width: 1px; background: rgba(255,255,255,.08); margin: 8px 0; }
+
+.demo-phead {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 11px; font-weight: 600; color: rgba(255,255,255,.9);
+}
+.demo-host {
+  font-size: 9px; font-weight: 600; color: rgba(255,255,255,.8);
+  padding: 2px 8px; border-radius: 999px; background: rgba(255,255,255,.12);
+}
+.demo-peers { display: flex; flex-direction: column; gap: 3px; }
+.demo-peer {
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 7px; border-radius: 6px; background: rgba(255,255,255,.05);
+}
+.demo-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,.35); flex: none; }
+.demo-dot.on { background: #32d74b; }
+.demo-pc { display: flex; flex-direction: column; min-width: 0; }
+.demo-pc b { font-size: 11px; font-weight: 500; }
+.demo-pc i {
+  font-style: normal; font-size: 8.5px; color: rgba(255,255,255,.32);
+  font-family: var(--mono);
+}
+.demo-join { margin-left: auto; font-size: 9px; font-weight: 600; color: rgba(255,255,255,.75); }
+
+.demo-lines { display: flex; flex-direction: column; gap: 3px; }
+.demo-line { display: block; font-size: 10.5px; color: rgba(255,255,255,.85); }
+.demo-line b { font-size: 9.5px; font-weight: 600; color: rgba(255,255,255,.5); }
+.demo-line b.them { color: rgba(90,200,250,.9); }
+.demo-field {
+  margin-top: 2px; font-size: 10px; color: rgba(255,255,255,.32);
+  padding: 5px 8px; border-radius: 6px; background: rgba(255,255,255,.08);
+}
+
+/* Calendar — today's events, each in its own calendar's colour. */
+.demo-cal {
+  display: flex; flex-direction: column; justify-content: center; gap: 6px;
+  width: 100%;
+}
+.demo-calhead {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 2px;
+}
+.demo-calhead b { font-size: 13px; font-weight: 600; }
+.demo-calhead span { font-size: 10.5px; color: rgba(255,255,255,.5); }
+.demo-ev {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11.5px; color: rgba(255,255,255,.88);
+}
+.demo-ev .bar { width: 3px; height: 16px; border-radius: 2px; flex: none; }
+.demo-ev .bar.c1 { background: #32a8ff; }
+.demo-ev .bar.c2 { background: #ff6b8a; }
+.demo-ev .bar.c3 { background: #34d3a5; }
+.demo-ev em {
+  margin-left: auto; font-style: normal; font-size: 10px;
+  color: rgba(255,255,255,.45); font-family: var(--mono);
+}
+
+/* ---------------------------- dots ---------------------------- */
+
+.stage-dots {
+  list-style: none; display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 18px 0 0; padding: 0;
+}
+.stage-dots button {
+  border: 1px solid var(--line-2); background: transparent;
+  color: var(--ink-3); cursor: pointer;
+  padding: 7px 14px; border-radius: 999px;
+  font: 600 13px/1 var(--font);
+  transition: color 140ms var(--ease), border-color 140ms var(--ease);
+}
+.stage-dots button:hover { color: var(--ink-2); }
+.stage-dots button.on { color: var(--ink); border-color: var(--line); }
+
+/* ============================ FEATURES ============================ */
+/* Icon above a two-line label. No prose — the icon is the explanation. */
+
+.support {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin: -38px 0 76px;
+  border: 1px solid var(--line-2);
+  background: var(--line-2);
+}
+
+.support-item {
+  min-height: 96px;
+  padding: 20px;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.support-item b {
+  font-size: 18px;
+  letter-spacing: -0.2px;
+}
+
+.support-item span {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.support-item.ok b::before {
+  content: "";
+  display: inline-block;
+  width: 8px; height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--emerald);
+  vertical-align: 1px;
+}
+
+.feats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 56px 24px;
+  margin-bottom: 108px;
+}
+
+.feat {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; gap: 18px;
+  min-height: 164px;
+}
+
+.feat svg {
+  width: 112px; height: 72px;
+  fill: none; stroke: var(--ink); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.feat svg .fill  { fill: var(--ink); stroke: none; }
+.feat svg .green { fill: var(--emerald); }
+.feat svg .amber { fill: var(--amber); }
+
+.feat h3 {
+  margin: 0;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+}
+
+.roadmap {
+  margin: 0 0 112px;
+  padding-top: 8px;
+}
+
+.roadmap .h2 {
+  text-align: left;
+  margin-bottom: 28px;
+}
+
+.road-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  border: 1px solid var(--line-2);
+  background: var(--line-2);
+}
+
+.road-grid > div {
+  background: var(--paper);
+  padding: 24px;
+  min-height: 164px;
+}
+
+.road-grid b {
+  display: block;
+  font-size: 20px;
+  letter-spacing: -0.2px;
+  margin-bottom: 10px;
+}
+
+.road-grid p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* ============================ CLOSER ============================ */
+
+.closer { text-align: center; }
+
+.h2 {
+  margin: 0 0 28px;
+  font-size: clamp(34px, 5vw, 64px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.closer .cta { justify-content: center; }
+.meta { margin: 20px 0 0; font-size: 14px; color: var(--ink-3); }
+
+/* ============================ FOOTER ============================ */
+
+.foot {
+  position: relative;
+  min-height: 240px;
+  padding: 48px var(--pad) 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-3) 100%);
+  border-top: 1px solid var(--line-2);
+}
+.foot-in {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 16px;
+  max-width: 1280px; margin: 0 auto;
+}
+.foot-links { display: flex; gap: 24px; font-size: 15px; color: var(--ink-2); }
+.foot-links a:hover { color: var(--ink); }
+.foot-legal { margin: 0; font-size: 13px; color: var(--ink-3); }
+
+/* Oversized wordmark, cropped by the footer's own overflow. */
+.wordmark {
+  margin: 18px 0 -0.22em;
+  text-align: center;
+  font-size: clamp(80px, 19vw, 260px);
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  color: color-mix(in srgb, var(--ink) 9%, transparent);
+  user-select: none;
+}
+
+/* ============================ RESPONSIVE ============================ */
+
+@media (max-width: 900px) {
+  .feats { grid-template-columns: repeat(2, 1fr); gap: 44px 20px; }
+  .support, .road-grid { grid-template-columns: 1fr; }
+  .display { max-width: 100%; }
+}
+
+@media (max-width: 700px) {
+  :root { --head: 88px; }
+  .nav-links { display: none; }
+  .stage { aspect-ratio: 4 / 3; }
+  /* The open body is 344px wide — scale the whole island so it never
+     outgrows a narrow stage. transform, so the morph stays untouched. */
+  .island {
+    top: 30px;
+    transform: translateX(-50%) scale(0.82);
+    transform-origin: 50% 0;
+  }
+  .cta .btn { width: 100%; justify-content: center; }
+  .cta .btn-dl { background-position: 18px center; padding-left: 48px; }
+}
+
+/* ============================ PREFERENCES ============================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 120ms !important;
+  }
+  .island { transition-duration: 140ms !important; }
+  .btn:active { transform: none; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .nav { background: var(--paper); backdrop-filter: none; }
+}
+
+@media (prefers-contrast: more) {
+  .nav { background: var(--paper); backdrop-filter: none; }
+  .stage-dots button { border-color: var(--ink-3); }
+  :root { --ink-2: rgba(67, 48, 43, 0.92); --ink-3: rgba(67, 48, 43, 0.72); }
+}
+
+/* Beta framing under the hero CTA. An unsigned build has to say so before
+   the download, not after it fails to open. */
+.beta-note {
+  margin: 14px auto 0;
+  max-width: 34rem;
+  font-size: .82rem;
+  line-height: 1.5;
+  color: var(--dim, #8a8a92);
+  text-align: center;
+}
+.hero .sub {
+  margin: 14px auto 0;
+  max-width: 32rem;
+  font-size: 1.05rem;
+  color: var(--dim, #8a8a92);
+  text-align: center;
+}

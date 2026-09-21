@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQs — Nimbus</title>
+<meta name="description" content="Common questions about Nimbus: notch compatibility, pricing, Apple silicon, permissions, and first launch.">
+<meta name="theme-color" content="#fff0df">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0b0f'/%3E%3Crect x='6' y='13' width='20' height='6' rx='3' fill='%233a3a3f'/%3E%3Ccircle cx='21' cy='16' r='2' fill='%2332d74b'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav stuck" id="nav">
+  <div class="nav-in">
+    <a class="mark" href="index.html" aria-label="Nimbus — home">
+      <svg class="mark-svg" viewBox="0 0 44 16" aria-hidden="true">
+        <rect x="1" y="1" width="42" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+        <circle cx="34" cy="8" r="2.6" fill="#32d74b"/>
+      </svg>
+      <span class="mark-word">Nimbus</span>
+    </a>
+    <a class="ver" href="changelog.html">v 1.0 beta7</a>
+
+    <nav class="nav-links" aria-label="Sections">
+      <a href="faqs.html" aria-current="page">FAQs</a>
+      <a href="changelog.html">Changelog</a>
+    </nav>
+
+    <a class="btn" data-download href="#">Download for Mac</a>
+  </div>
+</header>
+
+<main id="main">
+<div class="col">
+
+  <h1 class="page-h">FAQs</h1>
+
+  <div class="qs">
+
+    <details class="q" open>
+      <summary>Why does macOS say the app can’t be opened?</summary>
+      <p>The beta is not notarized by Apple yet, so the first launch is blocked
+         and a double-click simply fails. <b>Right-click Nimbus in Applications
+         and choose Open</b>, then Open again in the dialog. Once only — every
+         launch after that is normal. If macOS still refuses, go to
+         <b>System Settings → Privacy &amp; Security</b>, scroll down and click
+         <b>Open Anyway</b>.</p>
+    </details>
+
+    <details class="q">
+      <summary>Do I need a Mac with a notch?</summary>
+      <p>No. Nimbus draws its own island at the top of the screen, so it works the
+         same on a MacBook Air with a notch and on an external display without one.
+         On notched Macs it sits around the notch rather than fighting it.</p>
+    </details>
+
+    <details class="q">
+      <summary>What does it cost?</summary>
+      <p><b>Nothing while it is in beta.</b> When it leaves beta it will be a
+         one-time purchase — no subscription, no account, no upsell inside the
+         app. Nothing in the beta expires.</p>
+    </details>
+
+    <details class="q">
+      <summary>Which macOS versions are supported?</summary>
+      <p>Nimbus beta requires <b>macOS 13 Ventura or newer</b>. It works on
+         Ventura, Sonoma and Sequoia. The current beta is built for Apple
+         silicon Macs.</p>
+    </details>
+
+    <details class="q">
+      <summary>Apple silicon or Intel?</summary>
+      <p>Apple silicon for now: M1, M2, M3, M4 and newer. Intel support would
+         need a separate universal build.</p>
+    </details>
+
+    <details class="q">
+      <summary>Is there a Windows version?</summary>
+      <p>Not yet. Windows is planned after the Mac beta is stable. The current
+         download is a native macOS app and will not run on Windows.</p>
+    </details>
+
+    <details class="q">
+      <summary>Does Listen Together work across the internet?</summary>
+      <p>In this beta, Listen Together is for friends on the <b>same Wi-Fi</b>.
+         Add the friend in Settings with the address Nimbus shows on their Mac,
+         then swipe up on the notch to host or join.</p>
+    </details>
+
+    <details class="q">
+      <summary>macOS says the developer can't be verified.</summary>
+      <p>The beta is ad-hoc signed, which macOS treats as unidentified.
+         Right-click the app and choose <b>Open</b>, then confirm — you only
+         need to do this once.</p>
+    </details>
+
+  </div>
+
+  <p class="back"><a href="index.html">← Back to Nimbus</a></p>
+
+</div>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <nav class="foot-links" aria-label="Elsewhere">
+      <a href="faqs.html">FAQs</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="https://github.com/Superior-curtis/nimbus-releases">Get help</a>
+    </nav>
+    <p class="foot-legal">© 2026 Superior Curtis. All rights reserved.</p>
+  </div>
+  <p class="wordmark" aria-hidden="true">Nimbus</p>
+</footer>
+
+<script src="site.js?v=1.0-beta7"></script>
+</body>
+</html>

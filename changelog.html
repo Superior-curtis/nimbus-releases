@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Changelog — Nimbus</title>
+<meta name="description" content="What shipped in each release of Nimbus.">
+<meta name="theme-color" content="#fff0df">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0b0f'/%3E%3Crect x='6' y='13' width='20' height='6' rx='3' fill='%233a3a3f'/%3E%3Ccircle cx='21' cy='16' r='2' fill='%2332d74b'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav stuck" id="nav">
+  <div class="nav-in">
+    <a class="mark" href="index.html" aria-label="Nimbus — home">
+      <svg class="mark-svg" viewBox="0 0 44 16" aria-hidden="true">
+        <rect x="1" y="1" width="42" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+        <circle cx="34" cy="8" r="2.6" fill="#32d74b"/>
+      </svg>
+      <span class="mark-word">Nimbus</span>
+    </a>
+    <a class="ver" href="changelog.html" aria-current="page">v 1.0 beta7</a>
+
+    <nav class="nav-links" aria-label="Sections">
+      <a href="faqs.html">FAQs</a>
+      <a href="changelog.html" aria-current="page">Changelog</a>
+    </nav>
+
+    <a class="btn" data-download href="#">Download for Mac</a>
+  </div>
+</header>
+
+<main id="main">
+<div class="col">
+
+  <h1 class="page-h">Changelog</h1>
+
+  <ol class="rel">
+
+    <li class="rel-item">
+      <b>1.0 beta7</b>
+      <ul>
+        <li>Same-Wi-Fi discovery now shows nearby Nimbus Macs in Settings →
+            Friends, so you can add a friend without typing an IP address.</li>
+        <li>Friend connections can trust either the saved IP or the saved Mac
+            name, fixing the “add a friend, then nothing happens” path on
+            networks that choose IPv6 or Bonjour names.</li>
+        <li>Shelf items reveal in Finder with a click and drag out as explicit
+            file URLs, so parked files no longer feel trapped.</li>
+        <li>Nimbus checks the public release feed for updates on launch, with a
+            manual Check for Updates item in the app and menu-bar menus.</li>
+        <li>Fixed the release build so macOS reads the real minimum version as
+            <b>macOS 13.0</b>, not the build machine's current macOS.</li>
+      </ul>
+    </li>
+
+    <li class="rel-item">
+      <div class="rel-meta">
+        <b>0.1.4</b>
+        <time datetime="2026-09">September 2026</time>
+      </div>
+      <div class="rel-body">
+        <h2>Island-only overlay</h2>
+        <ul>
+          <li>Fixed a bug where desktop ornaments from the demo (the
+              launcher, hot zones, dock edges, the hidden dock) were rendering
+              on top of your screen around the island.</li>
+          <li>The transparent overlay now shows <b>only the island</b> — the
+              idle pill, or its home content when you open it. Nothing else
+              leaks into the panel.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="rel-item">
+      <div class="rel-meta">
+        <b>0.1.3</b>
+        <time datetime="2026-09">September 2026</time>
+      </div>
+      <div class="rel-body">
+        <h2>Alcove-true placement</h2>
+        <ul>
+          <li>The island now hangs flush with the <b>very top edge of the
+              screen</b>, right at the notch / menu-bar line — not a menu-bar
+              height below it, exactly like the original demo places it.</li>
+          <li>It rides at a high window layer so nothing ever stacks over it,
+              in any app or full-screen Space.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="rel-item">
+      <div class="rel-meta">
+        <b>0.1.2</b>
+        <time datetime="2026-09">September 2026</time>
+      </div>
+      <div class="rel-body">
+        <h2>Floating island</h2>
+        <ul>
+          <li>The island now lives on your <b>real desktop</b> — a transparent,
+              always-on-top overlay at the top of the screen that joins every
+              Space and never steals focus from the app you're typing in.</li>
+          <li>No Dock icon: Nimbus runs as a menu-bar item, and the island
+              expands when you hover or click it — music, weather, timers,
+              downloads, HUD and clipboard over any app.</li>
+          <li>Settings now live in their own window (<code>⌘,</code> or the
+              menu-bar icon). First run opens it for the 1-day trial.</li>
+          <li>Licence keys are stored in the macOS Keychain; keys activated in
+              0.1.1 are carried over automatically.</li>
+          <li>Apple silicon (<code>arm64</code>) builds.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="rel-item">
+      <div class="rel-meta">
+        <b>0.1.1</b>
+        <time datetime="2026-09">September 2026</time>
+      </div>
+      <div class="rel-body">
+        <h2>Native window</h2>
+        <ul>
+          <li>Real Mac window: full-size content under the traffic lights,
+              no simulated menu bar inside the window, drag the desktop to
+              move it.</li>
+          <li>Native app menu — About, Settings… and Island Panels
+              (<code>⌘1</code>–<code>⌘9</code>), Reload (<code>⌘R</code>),
+              Close (<code>⌘W</code>), Quit (<code>⌘Q</code>).</li>
+          <li>Right-click shows a native editing menu, never a web-view menu.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="rel-item">
+      <div class="rel-meta">
+        <b>0.1.0</b>
+        <time datetime="2026-09">September 2026</time>
+      </div>
+      <div class="rel-body">
+        <h2>First release</h2>
+        <ul>
+          <li>The island: idle pill that expands into music, weather, timers,
+              clipboard, downloads and HUD surfaces.</li>
+          <li>Privacy indicators — camera and microphone dots while the island is closed.</li>
+          <li>System Settings-style preferences with nine panels (<code>⌘1</code>–<code>⌘9</code>).</li>
+          <li>Keyboard control throughout, standing down while you type in a text field.</li>
+          <li>Licence gate: 1-day trial, one-time purchase, offline activation.</li>
+          <li>Apple silicon build, shipped as a DMG.</li>
+        </ul>
+      </div>
+    </li>
+
+  </ol>
+
+  <p class="back"><a href="index.html">← Back to Nimbus</a></p>
+
+</div>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <nav class="foot-links" aria-label="Elsewhere">
+      <a href="faqs.html">FAQs</a>
+      <a href="changelog.html">Changelog</a>
+      <a href="https://github.com/Superior-curtis/nimbus-releases">Get help</a>
+    </nav>
+    <p class="foot-legal">© 2026 Superior Curtis. All rights reserved.</p>
+  </div>
+  <p class="wordmark" aria-hidden="true">Nimbus</p>
+</footer>
+
+<script src="site.js?v=1.0-beta7"></script>
+</body>
+</html>
