@@ -85,7 +85,7 @@ Go live and your friends hear exactly what your computer is playing, with the so
 
 ### 🔒 Still there when your Mac is locked
 
-On the Mac, the notch stays on the lock screen and a row of glass widgets sits under the clock: what's playing with its controls, the weather, your battery, your AirPods and your focus timer. Choose the cards, where they sit, and Glass or Dark.
+On the Mac, the notch stays on the lock screen and a row of glass widgets sits under the clock: what's playing with its controls, the weather, your battery and your AirPods. Choose the cards, where they sit, and Glass or Dark.
 
 </td>
 </tr>
@@ -99,6 +99,16 @@ Black is the default, because black is what lets the island melt into the camera
 </td>
 <td width="50%"><img src="assets/background.png" alt="Album art as the notch background"></td>
 </tr>
+<tr>
+<td width="50%"><img src="assets/calls-messages.png" alt="A ringing call, a message, Siri's answer and Reminders in the notch"></td>
+<td>
+
+### 📞 Calls, messages, Siri and Reminders
+
+On the Mac, a FaceTime or phone call rings in the notch with Answer and Decline, and a call you're on shows its running time. A new message shows who it's from and what it says, even when it came from your iPhone. Siri's answer appears right there, and your real Apple Reminders are one click away.
+
+</td>
+</tr>
 </table>
 
 <br>
@@ -107,9 +117,8 @@ Black is the default, because black is what lets the island melt into the camera
 
 - **Volume and brightness** show up in the island instead of the system pop-up.
 - **Face Unlock** (Mac) unlocks with your face whenever the lock screen wakes.
-- **Clipboard history, calendar, focus timer** (Mac), one swipe away.
+- **Clipboard history and calendar** (Mac), one swipe away.
 - **Camera and mic dots** (Mac): green and orange beside the notch, naming the app that turned them on.
-- **Eyedropper** (Mac): pick any colour on screen and its hex code is copied.
 - **Favorites and listening history** land in real Apple Music or Spotify playlists.
 - **Updates itself.** Every new version arrives on its own.
 
