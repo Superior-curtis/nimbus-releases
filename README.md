@@ -21,6 +21,8 @@ and your friends, listening along. In the space your screen already gives you.
 ![macOS 13+](https://img.shields.io/badge/macOS-13%2B-111?style=flat-square&logo=apple)
 ![Windows 10 · 11](https://img.shields.io/badge/Windows-10%20%C2%B7%2011-111?style=flat-square&logo=windows)
 ![Downloads](https://img.shields.io/github/downloads/Superior-curtis/nimbus-releases/total?style=flat-square&color=FF5468&label=downloads)
+[![Discord](https://img.shields.io/badge/Discord-join-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/bsZ8RkH98h)
+[![Instagram](https://img.shields.io/badge/Instagram-%40nimbus__mac-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/nimbus_mac/)
 
 <br>
 
@@ -167,10 +169,18 @@ More in the [FAQ](https://nimbus-mac.web.app/faqs) · what's new in the [changel
 
 <br>
 
+## Come say hi
+
+- **[Discord](https://discord.gg/bsZ8RkH98h)**: questions, bug reports, and what's coming next.
+- **[Instagram @nimbus_mac](https://www.instagram.com/nimbus_mac/)**: updates and clips.
+- **Email**: [yournimbus@gmail.com](mailto:yournimbus@gmail.com)
+
+<br>
+
 <div align="center">
 
 **[nimbus-mac.web.app](https://nimbus-mac.web.app)**
 
-<sub>Made by Superior Curtis · Found a bug? <a href="https://github.com/Superior-curtis/nimbus-releases/issues">Open an issue</a>.</sub>
+<sub>Made by Superior Curtis · Found a bug? <a href="https://github.com/Superior-curtis/nimbus-releases/issues">Open an issue</a> or tell us on <a href="https://discord.gg/bsZ8RkH98h">Discord</a>.</sub>
 
 </div>
