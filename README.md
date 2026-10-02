@@ -12,7 +12,7 @@ and your friends, listening along. In the space your screen already gives you.
 <br>
 
 [**Download for Mac**](https://github.com/Superior-curtis/nimbus-releases/releases/latest) &nbsp;·&nbsp;
-[**Download for Windows**](https://github.com/Superior-curtis/nimbus-releases/releases/tag/windows-v2.9.3) &nbsp;·&nbsp;
+[**Download for Windows**](https://github.com/Superior-curtis/nimbus-releases/releases/tag/windows-v2.9.8) &nbsp;·&nbsp;
 [**Open in your browser**](https://nimbus-mac.web.app/account)
 
 <br>
@@ -131,7 +131,7 @@ On the Mac, a FaceTime or phone call rings in the notch with Answer and Decline,
 | | | |
 |---|---|---|
 | **Mac** | macOS 13 Ventura or newer · Apple silicon & Intel | [Download the .dmg](https://github.com/Superior-curtis/nimbus-releases/releases/latest) |
-| **Windows** | Windows 10 (2004+) or 11 · x64 & ARM | [Download the .exe](https://github.com/Superior-curtis/nimbus-releases/releases/tag/windows-v2.9.3) |
+| **Windows** | Windows 10 (2004+) or 11 · x64 & ARM | [Download the .exe](https://github.com/Superior-curtis/nimbus-releases/releases/tag/windows-v2.9.8) |
 | **Any browser** | Together only: chat, friends, listen to a Live | [Open Nimbus Together](https://nimbus-mac.web.app/account) |
 
 <details>
