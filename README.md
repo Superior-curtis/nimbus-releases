@@ -23,6 +23,7 @@ and your friends, listening along. In the space your screen already gives you.
 ![Downloads](https://img.shields.io/github/downloads/Superior-curtis/nimbus-releases/total?style=flat-square&color=FF5468&label=downloads)
 [![Discord](https://img.shields.io/badge/Discord-join-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/bsZ8RkH98h)
 [![Instagram](https://img.shields.io/badge/Instagram-%40nimbus__mac-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/nimbus_mac/)
+[![YouTube](https://img.shields.io/badge/YouTube-%40Nimbus--notch-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://www.youtube.com/@Nimbus-notch)
 
 <br>
 
@@ -118,7 +119,8 @@ On the Mac, a FaceTime or phone call rings in the notch with Answer and Decline,
 ## And the small things
 
 - **Volume and brightness** show up in the island instead of the system pop-up.
-- **Face Unlock** (Mac) unlocks with your face whenever the lock screen wakes.
+- **Face Unlock** (Mac) unlocks with your face whenever the lock screen wakes, and can answer Touch ID and password prompts too: password AutoFill in your browser, the Passwords app, System Settings. Off until you turn it on.
+- **A tidy Settings window** (Mac), laid out like System Settings.
 - **Clipboard history and calendar** (Mac), one swipe away.
 - **Camera and mic dots** (Mac): green and orange beside the notch, naming the app that turned them on.
 - **Favorites and listening history** land in real Apple Music or Spotify playlists.
@@ -173,6 +175,7 @@ More in the [FAQ](https://nimbus-mac.web.app/faqs) · what's new in the [changel
 
 - **[Discord](https://discord.gg/bsZ8RkH98h)**: questions, bug reports, and what's coming next.
 - **[Instagram @nimbus_mac](https://www.instagram.com/nimbus_mac/)**: updates and clips.
+- **[YouTube @Nimbus-notch](https://www.youtube.com/@Nimbus-notch)**: demos and walkthroughs.
 - **Email**: [yournimbus@gmail.com](mailto:yournimbus@gmail.com)
 
 <br>
